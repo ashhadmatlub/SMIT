@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      .navbar {
+        display: flex;
+      }
+      .nav_list {
+        display: flex;
+        flex-direction: row;
+        list-style: none;
+        text-decoration: none;
+        gap: 75px;
+      }
+      .nav_con {
+        padding: 10px;
+        padding-left: 300px;
+      }
+      .container,
+      .nav_con {
+        border: 2px solid black;
+        border-radius: 6px;
+        background-color: burlywood;
+        font-size: large;
+        font-family: sans-serif;
+        font-style: oblique;
+        font-weight: 550;
+        text-align: center;
+        margin: 6px;
+        box-shadow: 2px 1px 1px black;
+        /* padding: 10px; */
+        /* justify-content: center;
+        display: flex;
+        flex-direction: column; */
+      }
+      .para1 {
+        padding: 10px;
+      }
+      .section_container,
+      .section_container_1 {
+        border: 2px solid black;
+        border-radius: 6px;
+        background-color: rgb(135, 222, 218);
+        font-size: large;
+        font-family: sans-serif;
+        font-style: oblique;
+        font-weight: 550;
+        box-shadow: 2px 1px 1px black;
+        margin: 6px;
+      }
+      .sec_head,
+      .main_head {
+        text-align: center;
+        padding: 10px;
+        background-color: black;
+        color: white;
+      }
+      .sec_list {
+        padding: 10px;
+      }
+      .rel {
+        list-style: none;
+        text-decoration: none;
+        color: black;
+      }
+    </style>
+  </head>
+  <body>
+    <header id="head">
+      <div class="nav_con">
+        <nav class="navbar">
+          <ul class="nav_list">
+            <li><a class="rel" href="#head">Home</a></li>
+            <li><a class="rel" href="#sect_1">Features</a></li>
+            <li><a class="rel" href="#sect_2">Importance</a></li>
+            <li>
+              <a class="rel" href="Table.html" target="_blank"
+                >Periodic Table</a
+              >
+            </li>
+            <li><a class="rel" href="Img.html">Image</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="container">
+        <h3 class="main_head">Periodic Table</h3>
+        <p class="para1">
+          The periodic table is a tabular arrangement of the 118 known chemical
+          elements, ordered by increasing atomic number, which represents the
+          number of protons in an atom's nucleus. It organizes elements into
+          horizontal rows called periods and vertical columns called groups,
+          where elements in the same group have similar chemical properties.
+          This iconic chart, primarily credited to Dmitri Mendeleev, helps
+          scientists understand element properties, trends, and predict chemical
+          reactions.
+        </p>
+      </div>
+    </header>
+    <article>
+      <section id="sect_1" class="section_container">
+        <h3 class="sec_head">Key Components and Features</h3>
+        <p>
+          <li>
+            <ul class="sec_list">
+              <dt>Atomic Number:</dt>
+              <dd>
+                The fundamental organizing principle of the modern periodic
+                table, indicating the number of protons in an atom's nucleus.
+              </dd>
+            </ul>
+            <ul class="sec_list">
+              <dt>Periods:</dt>
+              <dd>
+                The horizontal rows of the periodic table, corresponding to the
+                principal energy levels of electrons.
+              </dd>
+            </ul>
+            <ul class="sec_list">
+              <dt>Groups:</dt>
+              <dd>
+                The vertical columns, which contain elements with similar
+                valence electron configurations and, therefore, similar chemical
+                and physical properties.
+              </dd>
+            </ul>
+            <ul class="sec_list">
+              <dt>Chemical Symbols:</dt>
+              <dd>
+                A one or two-letter abbreviation for each element (e.g., H for
+                Hydrogen).
+              </dd>
+            </ul>
+            <ul class="sec_list">
+              <dt>Atomic Mass:</dt>
+              <dd>
+                The average mass of an element's atoms, including its isotopes.
+              </dd>
+            </ul>
+            <ul class="sec_list">
+              <dt>Element Blocks:</dt>
+              <dd>
+                The periodic table is often divided into metals, nonmetals, and
+                metalloids.
+              </dd>
+            </ul>
+            <ul class="sec_list">
+              <dt>Noble Gases, Alkali Metals, and Halogens:</dt>
+              <dd>
+                Examples of named groups with distinct chemical characteristics.
+              </dd>
+            </ul>
+          </li>
+        </p>
+      </section>
+      <section id="sect_2" class="section_container_1">
+        <h3 class="sec_head">Why It's Important</h3>
+        <p>
+          <li>
+            <ul class="sec_list">
+              <dt>Predicting Properties:</dt>
+              <dd>
+                The arrangement reveals trends in element properties, such as
+                atomic radius, ionization energy, and electronegativity.
+              </dd>
+            </ul>
+            <ul class="sec_list">
+              <dt>Understanding Reactions:</dt>
+              <dd>
+                It helps scientists analyze the reactivity of elements and
+                predict how they will interact.
+              </dd>
+            </ul>
+            <ul class="sec_list">
+              <dt>Foundation for Science:</dt>
+              <dd>
+                The periodic table is a foundational tool in chemistry, physics,
+                and other sciences, providing a roadmap for scientific
+                discovery.
+              </dd>
+            </ul>
+            <ul class="sec_list">
+              <dt>Historical Development:</dt>
+              <dd>
+                While many scientists contributed to its development, Dmitri
+                Mendeleev's 1869 version is considered a significant milestone
+              </dd>
+            </ul>
+          </li>
+        </p>
+      </section>
+    </article>
+  </body>
+</html>
