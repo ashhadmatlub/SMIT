@@ -1,0 +1,265 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: linear-gradient(to right, #1b313b, #1e3f30, #1d3213);
+}
+.main {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  gap: 150px;
+}
+.manual {
+  width: 350px;
+  height: 130px;
+  color: wheat;
+  font-style: oblique;
+  padding: 10px;
+  margin-top: 90px;
+  margin-left: 150px;
+  border-radius: 10px;
+  border: 2px solid black;
+  box-shadow: 2px 2px 2px black;
+}
+.container {
+  width: 350px;
+  height: 450px;
+  margin-top: 90px;
+  border-radius: 10px;
+  box-shadow: 2px 2px 2px black;
+  border: 2px solid black;
+  background-image: linear-gradient(to right, #232526, #414345);
+}
+
+#screen {
+  height: 40px;
+  width: 290px;
+  align-content: center;
+  padding-left: 6px;
+  font-size: larger;
+  font-weight: bolder;
+  font-style: oblique;
+  border-radius: 6px;
+  border: solid black;
+  margin-top: 26px;
+  margin-left: 20px;
+  background: linear-gradient(to right, #345139, #444f30);
+}
+
+.keys {
+  width: 265px;
+  margin: 34px;
+}
+
+.key_Func {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.key_Func button {
+  padding: 18px;
+  font-size: 18px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  background: #0d1113;
+  color: #7fae5e;
+  transition: 0.2s ease;
+}
+
+.key_Func button:hover {
+  background: #162b1f;
+}
+
+.key_Func button:active {
+  transform: scale(0.95);
+}
+
+/* responsiveness  */
+
+@media (max-width: 360px) {
+  body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .main {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .manual {
+    width: 95%;
+    height: auto;
+    margin: 10px auto;
+    font-size: 12px;
+    padding: 8px;
+  }
+
+  .container {
+    width: 95%;
+    height: auto;
+    margin: 0 auto;
+  }
+
+  #screen {
+    width: 92%;
+    height: 38px;
+    font-size: 16px;
+    margin: 18px auto;
+  }
+
+  .keys {
+    width: 100%;
+    margin: 15px auto;
+  }
+
+  .key_Func {
+    gap: 8px;
+    margin: 10px;
+  }
+
+  .key_Func button {
+    padding: 12px;
+    font-size: 14px;
+    border-radius: 8px;
+  }
+}
+
+@media (min-width: 360px) and (max-width: 480px) {
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+  }
+
+  .main {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .manual {
+    width: 92%;
+    font-size: 15px;
+    margin: 10px 0;
+  }
+
+  .container {
+    width: 95%;
+    height: auto;
+    padding-bottom: 15px 10px;
+  }
+
+  #screen {
+    width: 92%;
+    height: 45px;
+    font-size: 18px;
+    margin: 20px auto;
+  }
+
+  .keys {
+    width: 100%;
+    margin: 15px auto;
+  }
+
+  .key_Func {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-left: 16px;
+    margin-right: 10px;
+  }
+
+  .key_Func button {
+    padding: 12px;
+    font-size: 18px;
+    border-radius: 8px;
+  }
+}
+
+@media (min-width: 480px) and (max-width: 768px) {
+  .main {
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
+  }
+
+  .manual {
+    width: 80%;
+    margin-left: 0;
+    margin-top: 40px;
+  }
+
+  .container {
+    width: 380px;
+    margin-top: 0;
+  }
+
+  #screen {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .key_Func {
+    margin: 10px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1200px) {
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+  }
+
+  .main {
+    gap: 80px;
+    align-items: flex-start;
+  }
+
+  .manual {
+    width: 300px;
+    font-size: 14px;
+    margin-left: 40px;
+    margin-top: 60px;
+  }
+
+  .container {
+    width: 340px;
+    height: auto;
+    margin-top: 60px;
+  }
+
+  #screen {
+    width: 92%;
+    height: 42px;
+    font-size: 18px;
+    margin: 22px auto;
+  }
+
+  .keys {
+    width: 100%;
+    margin: 25px auto;
+  }
+
+  .key_Func {
+    gap: 10px;
+    margin: 10px;
+  }
+
+  .key_Func button {
+    padding: 16px;
+    font-size: 16px;
+    border-radius: 10px;
+  }
+}
