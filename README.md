@@ -73,7 +73,3 @@ Clean and minimal UI
 Tech
 
 HTML, CSS, JavaScript
-
-Live Demo
-
-https://digital-clock101.netlify.app/
