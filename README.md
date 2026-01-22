@@ -58,3 +58,22 @@ A basic web-based calculator for performing simple calculations.
 - CSS
 - JavaScript
 
+Assignment_5 : https://digital-clock101.netlify.app/
+Digital Clock
+
+A simple digital clock built with HTML, CSS, and JavaScript.
+It shows the current time in HH:MM:SS format and updates every second.
+
+Features
+
+Real-time clock display
+
+Clean and minimal UI
+
+Tech
+
+HTML, CSS, JavaScript
+
+Live Demo
+
+https://digital-clock101.netlify.app/
