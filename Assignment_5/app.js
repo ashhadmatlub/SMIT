@@ -1,22 +1,12 @@
 // var obj = new Date();
 
-var g_days = document.getElementById("day");
-function show_day() {
+var g_year = document.getElementById("year");
+function show_year() {
   var obj = new Date();
-  var days = [
-    "Sunday ,",
-    "Monday ,",
-    "Tuesday ,",
-    "Wednesday ,",
-    "Thursday ,",
-    "Friday ,",
-    "Saturday ,",
-  ];
-  var num = obj.getDay();
-  g_days.innerText = days[num];
+  var num = obj.getFullYear();
+  g_year.innerText = num;
 }
-show_day();
-
+show_year();
 var g_month = document.getElementById("month");
 function show_month() {
   var obj = new Date();
@@ -37,24 +27,39 @@ function show_month() {
 
   var num = obj.getMonth();
   g_month.innerText = months[num];
+  if (num == 0) {
+    show_year();
+  }
 }
 show_month();
+
+var g_days = document.getElementById("day");
+function show_day() {
+  var obj = new Date();
+  var days = [
+    "Sunday ,",
+    "Monday ,",
+    "Tuesday ,",
+    "Wednesday ,",
+    "Thursday ,",
+    "Friday ,",
+    "Saturday ,",
+  ];
+  var num = obj.getDay();
+  g_days.innerText = days[num];
+}
+show_day();
 
 var g_date = document.getElementById("date");
 function show_date() {
   var obj = new Date();
   var num = obj.getDate();
   g_date.innerText = num + " ,";
+  if (num == 1) {
+    show_month();
+  }
 }
 show_date();
-
-var g_year = document.getElementById("year");
-function show_year() {
-  var obj = new Date();
-  var num = obj.getFullYear();
-  g_year.innerText = num;
-}
-show_year();
 
 var g_hour = document.getElementById("hour");
 var g_division = document.getElementById("division");
@@ -64,8 +69,11 @@ function show_hour() {
   g_division.style.fontSize = "35px";
   if (num == 0 || num == 12) {
     g_hour.innerText = "12 :";
-    if (num == 0) g_division.innerText = "AM";
-    else g_division.innerText = "PM";
+    if (num == 0) {
+      g_division.innerText = "AM";
+      show_date();
+      show_day();
+    } else g_division.innerText = "PM";
   } else if (num >= 1 && num < 10) {
     g_hour.innerText = "0" + num + " :";
     g_division.innerText = "AM";
@@ -74,8 +82,13 @@ function show_hour() {
     g_division.innerText = "AM";
   } else if (num > 12) {
     num -= 12;
-    g_hour.innerText = "0" + num + " :";
-    g_division.innerText = "PM";
+    if (num < 10) {
+      g_hour.innerText = "0" + num + " :";
+      g_division.innerText = "PM";
+    } else {
+      g_hour.innerText = num + " :";
+      g_division.innerText = "PM";
+    }
   }
 }
 show_hour();
@@ -87,6 +100,9 @@ function show_min() {
   if (num < 10) {
     g_mins.innerText = "0" + num + " :";
   } else g_mins.innerText = num + " :";
+  if (num == 0) {
+    show_hour();
+  }
 }
 show_min();
 
@@ -97,5 +113,8 @@ function show_sec() {
   if (num < 10) {
     g_secs.innerText = "0" + num;
   } else g_secs.innerText = num;
+  if (num == 0) {
+    show_min();
+  }
 }
 setInterval(show_sec, 1000);
