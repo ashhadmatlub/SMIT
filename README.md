@@ -1,7 +1,7 @@
 To see all projects go through the given portfolio
-Portfolio :
+Portfolio : https://projects-showcasing.netlify.app/
 
-Assignment-1 :
+Assignment-1
 
 # Periodic Table
 
@@ -17,7 +17,8 @@ A simple educational website that explains the structure of the Periodic Table o
 
 - HTML
 - CSS
-  Assignment-2 :
+
+Assignment-2
 
 # Signup Page UI
 
@@ -36,7 +37,7 @@ A front-end signup page design inspired by Google’s account creation interface
 
 > Note: This is only a UI design, not a functional signup system.
 
-Assignment-3 :
+Assignment-3
 
 # Website Template
 
@@ -70,7 +71,20 @@ Google Fonts (Lato)
 
 Created for practicing frontend layout design and improving CSS styling skills by recreating a real-world color palette interface.
 
-Assignment-5 :
+🍎 Assignment 5: Apple Website Clone
+
+A front-end clone inspired by the Apple website design.
+
+Features
+Modern and clean UI layout
+Product-style sections
+Responsive design
+Smooth visual structure
+Technologies Used
+HTML
+CSS
+
+Note: This is a UI clone for practice purposes only.
 
 Assignment-6: https://simplecalculators11.netlify.app/
 
