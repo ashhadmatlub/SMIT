@@ -1,265 +1,243 @@
-html,
-body {
+* {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-  background: linear-gradient(to right, #1b313b, #1e3f30, #1d3213);
+  font-family: "Lato", sans-serif;
+  background-color: #f5f5f5;
 }
-.main {
+
+/* ---- NAVBAR ---- */
+nav {
+  background-color: #ffffff;
+  border-bottom: 1px solid #dddddd;
+  padding: 15px 40px;
   display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  gap: 150px;
-}
-.manual {
-  width: 350px;
-  height: 130px;
-  color: wheat;
-  font-style: oblique;
-  padding: 10px;
-  margin-top: 90px;
-  margin-left: 150px;
-  border-radius: 10px;
-  border: 2px solid black;
-  box-shadow: 2px 2px 2px black;
-}
-.container {
-  width: 350px;
-  height: 450px;
-  margin-top: 90px;
-  border-radius: 10px;
-  box-shadow: 2px 2px 2px black;
-  border: 2px solid black;
-  background-image: linear-gradient(to right, #232526, #414345);
+  justify-content: space-between;
+  align-items: center;
 }
 
-#screen {
-  height: 40px;
-  width: 290px;
-  align-content: center;
-  padding-left: 6px;
-  font-size: larger;
-  font-weight: bolder;
-  font-style: oblique;
-  border-radius: 6px;
-  border: solid black;
-  margin-top: 26px;
-  margin-left: 20px;
-  background: linear-gradient(to right, #345139, #444f30);
+nav h1 {
+  font-size: 22px;
+  font-weight: 900;
+  color: #2c3e50;
 }
 
-.keys {
-  width: 265px;
-  margin: 34px;
+nav h1 span {
+  color: #e74c3c;
 }
 
-.key_Func {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 25px;
 }
 
-.key_Func button {
-  padding: 18px;
+nav ul a {
+  text-decoration: none;
+  color: #7f8c8d;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+nav ul a:hover {
+  color: #2c3e50;
+}
+
+/* ---- HERO ---- */
+.hero {
+  text-align: center;
+  padding: 60px 20px 30px;
+}
+
+.hero h2 {
+  font-size: 48px;
+  font-weight: 900;
+  color: #2c3e50;
+}
+
+.hero h2 span {
+  color: #e74c3c;
+}
+
+.hero p {
   font-size: 18px;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  background: #0d1113;
-  color: #7fae5e;
-  transition: 0.2s ease;
+  color: #7f8c8d;
+  margin-top: 10px;
 }
 
-.key_Func button:hover {
-  background: #162b1f;
+/* ---- TABS ---- */
+.tabs {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  padding: 30px 20px;
 }
 
-.key_Func button:active {
-  transform: scale(0.95);
+.tabs a {
+  text-decoration: none;
+  padding: 8px 20px;
+  border-radius: 25px;
+  border: 2px solid #dddddd;
+  font-size: 13px;
+  font-weight: 700;
+  color: #7f8c8d;
+  background-color: #ffffff;
 }
 
-/* responsiveness  */
-
-@media (max-width: 360px) {
-  body {
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .main {
-    flex-direction: column;
-    gap: 20px;
-  }
-
-  .manual {
-    width: 95%;
-    height: auto;
-    margin: 10px auto;
-    font-size: 12px;
-    padding: 8px;
-  }
-
-  .container {
-    width: 95%;
-    height: auto;
-    margin: 0 auto;
-  }
-
-  #screen {
-    width: 92%;
-    height: 38px;
-    font-size: 16px;
-    margin: 18px auto;
-  }
-
-  .keys {
-    width: 100%;
-    margin: 15px auto;
-  }
-
-  .key_Func {
-    gap: 8px;
-    margin: 10px;
-  }
-
-  .key_Func button {
-    padding: 12px;
-    font-size: 14px;
-    border-radius: 8px;
-  }
+.tabs a:hover {
+  background-color: #2c3e50;
+  color: #ffffff;
+  border-color: #2c3e50;
 }
 
-@media (min-width: 360px) and (max-width: 480px) {
-  body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-  }
+.tabs a.active {
+  background-color: #2c3e50;
+  color: #ffffff;
+  border-color: #2c3e50;
+}
 
-  .main {
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-  }
+/* ---- COLOR GRID ---- */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 30px 80px;
+}
 
-  .manual {
-    width: 92%;
-    font-size: 15px;
-    margin: 10px 0;
-  }
+/* ---- COLOR CARD ---- */
+.card {
+  height: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 14px 16px;
+}
 
-  .container {
-    width: 95%;
-    height: auto;
-    padding-bottom: 15px 10px;
-  }
+.card p {
+  font-size: 13px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.85);
+  text-transform: uppercase;
+}
 
-  #screen {
-    width: 92%;
-    height: 45px;
-    font-size: 18px;
-    margin: 20px auto;
-  }
+.card small {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.55);
+  font-family: monospace;
+  margin-top: 3px;
+  display: block;
+}
 
-  .keys {
-    width: 100%;
-    margin: 15px auto;
-  }
+/* dark text for light color cards */
+.card.dark p {
+  color: rgba(0, 0, 0, 0.5);
+}
 
-  .key_Func {
-    display: grid;
+.card.dark small {
+  color: rgba(0, 0, 0, 0.3);
+}
+
+/* ---- ALL 20 COLORS ---- */
+.c1 {
+  background-color: #1abc9c;
+}
+.c2 {
+  background-color: #16a085;
+}
+.c3 {
+  background-color: #2ecc71;
+}
+.c4 {
+  background-color: #27ae60;
+}
+.c5 {
+  background-color: #3498db;
+}
+.c6 {
+  background-color: #2980b9;
+}
+.c7 {
+  background-color: #9b59b6;
+}
+.c8 {
+  background-color: #8e44ad;
+}
+.c9 {
+  background-color: #34495e;
+}
+.c10 {
+  background-color: #2c3e50;
+}
+.c11 {
+  background-color: #f1c40f;
+}
+.c12 {
+  background-color: #f39c12;
+}
+.c13 {
+  background-color: #e67e22;
+}
+.c14 {
+  background-color: #d35400;
+}
+.c15 {
+  background-color: #e74c3c;
+}
+.c16 {
+  background-color: #c0392b;
+}
+.c17 {
+  background-color: #ecf0f1;
+}
+.c18 {
+  background-color: #bdc3c7;
+}
+.c19 {
+  background-color: #95a5a6;
+}
+.c20 {
+  background-color: #7f8c8d;
+}
+
+/* ---- FOOTER ---- */
+footer {
+  text-align: center;
+  padding: 25px;
+  font-size: 13px;
+  color: #bdc3c7;
+  border-top: 1px solid #e8e8e8;
+}
+
+/* ---- RESPONSIVE ---- */
+@media (max-width: 900px) {
+  .grid {
     grid-template-columns: repeat(4, 1fr);
-    gap: 10px;
-    margin-left: 16px;
-    margin-right: 10px;
-  }
-
-  .key_Func button {
-    padding: 12px;
-    font-size: 18px;
-    border-radius: 8px;
   }
 }
 
-@media (min-width: 480px) and (max-width: 768px) {
-  .main {
-    flex-direction: column;
-    align-items: center;
-    gap: 50px;
+@media (max-width: 650px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+    padding: 0 16px 50px;
   }
-
-  .manual {
-    width: 80%;
-    margin-left: 0;
-    margin-top: 40px;
+  .hero h2 {
+    font-size: 32px;
   }
-
-  .container {
-    width: 380px;
-    margin-top: 0;
-  }
-
-  #screen {
-    width: 90%;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  .key_Func {
-    margin: 10px;
+  nav ul {
+    display: none;
   }
 }
 
-@media (min-width: 768px) and (max-width: 1200px) {
-  body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
+@media (max-width: 430px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
   }
-
-  .main {
-    gap: 80px;
-    align-items: flex-start;
-  }
-
-  .manual {
-    width: 300px;
-    font-size: 14px;
-    margin-left: 40px;
-    margin-top: 60px;
-  }
-
-  .container {
-    width: 340px;
-    height: auto;
-    margin-top: 60px;
-  }
-
-  #screen {
-    width: 92%;
-    height: 42px;
-    font-size: 18px;
-    margin: 22px auto;
-  }
-
-  .keys {
-    width: 100%;
-    margin: 25px auto;
-  }
-
-  .key_Func {
-    gap: 10px;
-    margin: 10px;
-  }
-
-  .key_Func button {
-    padding: 16px;
-    font-size: 16px;
-    border-radius: 10px;
+  .card {
+    height: 120px;
   }
 }

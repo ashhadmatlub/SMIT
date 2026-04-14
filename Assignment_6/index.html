@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculator</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="main">
+      <div class="manual">
+        <ul>
+          <li>Press On to Open / Reset the Calculator</li>
+          <li>Press Off to Close the Calculator</li>
+          <li>Press (=) three times repeatedly to reset the Calculator</li>
+          <li>Press Mod for Modulas</li>
+          <li>Press % for Percentage</li>
+        </ul>
+      </div>
+      <div class="container">
+        <div id="screen">
+          <!-- <input class="display" type="text"  /> -->
+        </div>
+        <div class="keys">
+          <div class="key_Func">
+            <button onclick="num(7)">7</button>
+            <button onclick="num(8)">8</button>
+            <button onclick="num(9)">9</button>
+            <button onclick="opr('*')">x</button>
+
+            <button onclick="num(4)">4</button>
+            <button onclick="num(5)">5</button>
+            <button onclick="num(6)">6</button>
+            <button onclick="opr('-')">-</button>
+
+            <button onclick="num(1)">1</button>
+            <button onclick="num(2)">2</button>
+            <button onclick="num(3)">3</button>
+            <button onclick="opr('+')">+</button>
+
+            <button onclick="num(0)">0</button>
+            <button onclick="opr('%')">Mod</button>
+            <button onclick="opr('/')">/</button>
+            <button onclick="result()">=</button>
+
+            <button onclick="input('CE')">CE</button>
+            <button onclick="input('Percent')">%</button>
+            <button onclick="mode('ON')">ON</button>
+            <button onclick="mode('OFF')">OFF</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>
