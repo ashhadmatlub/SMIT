@@ -2,7 +2,7 @@ body {
   margin: 0;
   font-family: Arial, sans-serif;
   color: white;
-  /* background: linear-gradient(341deg, #0f0f0f, #152715, #434e5f); */
+  background: linear-gradient(341deg, #0f0f0f, #152715, #434e5f);
 
   min-height: 100vh;
   display: flex;
