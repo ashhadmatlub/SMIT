@@ -5,106 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>My Portfolio</title>
   </head>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      color: white;
-      /* background: linear-gradient(341deg, #0f0f0f, #152715, #434e5f); */
-
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-
-    html,
-    body {
-      height: 100%;
-    }
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      background: radial-gradient(
-        circle at top,
-        rgba(54, 112, 85, 0.15),
-        transparent 60%
-      );
-      pointer-events: none;
-    }
-    /* HEADER */
-    header {
-      text-align: center;
-      padding: 50px 20px 20px;
-    }
-
-    header h1 {
-      margin: 0;
-      font-size: 40px;
-    }
-
-    header p {
-      opacity: 0.7;
-    }
-
-    /* FILTER BUTTONS */
-    .filters {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-
-    .filters button {
-      margin: 5px;
-      padding: 10px 15px;
-      border: none;
-      cursor: pointer;
-      border-radius: 6px;
-      background: #101214;
-      color: white;
-      transition: 0.3s;
-    }
-
-    .filters button:hover {
-      background: #121a0d;
-    }
-
-    /* GRID */
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 15px;
-      padding: 20px;
-      flex: 1;
-    }
-
-    /* CARD */
-    .card {
-      background: #19201c;
-      padding: 20px;
-      border-radius: 12px;
-      text-decoration: none;
-      color: white;
-      transition: 0.3s;
-    }
-
-    .card:hover {
-      transform: translateY(-5px);
-      background: #01321c;
-    }
-
-    .card h3 {
-      margin: 0;
-    }
-
-    .card p {
-      opacity: 0.7;
-    }
-    footer {
-      text-align: center;
-      padding: 20px;
-      opacity: 0.6;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css" />
   <body>
     <!-- HEADER -->
     <header>
@@ -169,34 +70,6 @@
       <p>© 2026 My Portfolio</p>
     </footer>
 
-    <script>
-      function filterProjects(category) {
-        const cards = document.querySelectorAll(".card");
-
-        cards.forEach((card) => {
-          if (category === "all") {
-            card.style.display = "block";
-          } else {
-            if (card.classList.contains(category)) {
-              card.style.display = "block";
-            } else {
-              card.style.display = "none";
-            }
-          }
-        });
-      }
-      window.addEventListener("scroll", () => {
-        const scroll = window.scrollY;
-        const max = 800;
-
-        const ratio = Math.min(scroll / max, 1);
-
-        document.body.style.background = `linear-gradient(
-    135deg,
-    rgb(${10 + ratio * 20}, 15, 28),
-    rgb(${15 + ratio * 40}, 23, 42)
-  )`;
-      });
-    </script>
+    <script src="script.js"></script>
   </body>
 </html>
