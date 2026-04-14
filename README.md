@@ -12,7 +12,7 @@ A simple educational website that explains the structure of the Periodic Table o
 ## Technologies Used
 - HTML
 - CSS
-    Assignment-2 : https://creative-starship-061495.netlify.app/
+    Assignment-2 : https://signup876.netlify.app/
  # Signup Page UI
 
 A front-end signup page design inspired by Google’s account creation interface.
