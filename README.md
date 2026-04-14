@@ -1,6 +1,6 @@
-Portfolio : https://ashhadportfolios.netlify.app/
+To see all projects go through the given portfolio
+Portfolio :
 
-SMIT TASKS:
 Assignment-1 :
 
 # Periodic Table
@@ -70,7 +70,7 @@ Google Fonts (Lato)
 
 Created for practicing frontend layout design and improving CSS styling skills by recreating a real-world color palette interface.
 
-Assignment-8 : 
+Assignment-8 :
 
 Assignment-6: https://simplecalculators11.netlify.app/
 
