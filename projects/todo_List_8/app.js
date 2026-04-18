@@ -1,35 +1,87 @@
 var tasks = [];
+var show = document.getElementById("task_Display");
+var input = document.getElementById("assign_task"); // for edit purpose
 
 function add_task() {
-  var assign_task = document.getElementById("assign_task").value;
-  if (assign_task.length < 3) {
+  var assign_task = document.getElementById("assign_task");
+  if (assign_task.value.length < 3) {
     alert("task name must be greater then 2 words");
     return;
+  }
+
+  // Similiar tasks check
+  for (var i = 0; i < tasks.length; i++) {
+    if (assign_task.value == tasks[i].text) {
+      var ans = prompt(
+        "Tasks with similiar name already exists, Create new one ? ( Yes / no )",
+      );
+      if (ans == "no") {
+        return;
+      } else {
+        break;
+      }
+    }
   }
 
   var obj = {
     id: new Date().getTime() + Math.floor(Math.random() * 999),
     date: new Date(),
     done: false,
-    text: assign_task,
+    text: assign_task.value,
   };
 
   tasks.push(obj);
+  // idx++;
   assign_task.value = "";
   display_task();
   console.log(tasks);
 }
 
 function display_task() {
-  var show = document.getElementById("task_Display");
-  var task_name = tasks.pop();
-  //   show.innerText = task_name.text;
-  show.innerHTML += `<div class = "display_item" > 
-  <button id = " delete " onclick="delete_task()"> Delete </button> 
-  <button id = " edit " onclick="edit_task()"> Edit </button> 
-  <button id = " edit " onclick="done_task()"> Done </button> 
-  </div>`;
+  show.innerHTML = "";
+  for (var i = 0; i < tasks.length; i++) {
+    var get_name = tasks[i]; // to get obj
+
+    if (get_name.done == false) {
+      show.innerHTML += `<div class = "display_item" > 
+      <span> ${get_name.text}</span>
+      <button id = " delete " onclick="delete_task(${get_name.id})"> Delete </button> 
+      <button id = " edit " onclick="edit_task(${get_name.id})"> Edit </button> 
+      <button id = " done " onclick="done_task(${get_name.id})"> Done </button> 
+      </div>`;
+    } else {
+      show.innerHTML += `<div class = "display_item" > 
+      <span> ${get_name.text}</span>
+      <button id = " delete " disabled onclick="delete_task(${get_name.id})"> Delete </button> 
+      <button id = " edit " onclick="edit_task(${get_name.id})"> Edit </button> 
+      <button id = " done " disabled onclick="done_task(${get_name.id})"> Done </button> 
+      </div>`;
+    }
+  }
 }
 
-function delete_task() {}
-function done_task() {}
+function delete_task(id) {
+  for (var i = 0; i < tasks.length; i++) {
+    if (id == tasks[i].id) {
+      tasks.splice(i, 1);
+    }
+  }
+  display_task();
+}
+
+function done_task(id) {
+  for (var i = 0; i < tasks.length; i++) {
+    if (id == tasks[i].id) {
+      tasks[i].done = true;
+    }
+  }
+  display_task();
+}
+
+function edit(id) {
+  for (var i = 0; i < tasks.length; i++) {
+    if (id == tasks[i].id) {
+      input.innerText = tasks[i].text;
+    }
+  }
+}
