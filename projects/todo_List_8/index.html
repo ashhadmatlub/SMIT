@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todo List</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- holds everything -->
+    <div id="main_container">
+      <!-- takes the task / todo from the user. -->
+      <div class="input_container">
+        <input type="text" id="assign_task" />
+      </div>
+      <div id="btn_container">
+        <button id="add_task" onclick="add_task()">Add</button>
+        <button id="delete_task" onclick="delete_task()">Delete</button>
+      </div>
+    </div>
+    <div id="task_Display" onclick="display_task()"></div>
+    <script src="app.js"></script>
+  </body>
+</html>
