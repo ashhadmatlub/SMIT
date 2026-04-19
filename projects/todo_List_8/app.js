@@ -1,6 +1,7 @@
 var tasks = [];
-var show = document.getElementById("task_Display");
-var input = document.getElementById("assign_task"); // for edit purpose
+var show = document.getElementById("task_Display"); // display
+var input = document.getElementById("assign_task"); // get input text value
+var edit = document.getElementById("btn_container"); // for edit purpose
 
 function add_task() {
   var assign_task = document.getElementById("assign_task");
@@ -28,6 +29,7 @@ function add_task() {
     date: new Date(),
     done: false,
     text: assign_task.value,
+    edit: false,
   };
 
   tasks.push(obj);
@@ -42,7 +44,7 @@ function display_task() {
   for (var i = 0; i < tasks.length; i++) {
     var get_name = tasks[i]; // to get obj
 
-    if (get_name.done == false) {
+    if (get_name.done == false && get_name.edit == false) {
       show.innerHTML += `<div class = "display_item" > 
       <span> ${get_name.text}</span>
       <button id = " delete " onclick="delete_task(${get_name.id})"> Delete </button> 
@@ -78,10 +80,27 @@ function done_task(id) {
   display_task();
 }
 
-function edit(id) {
+function update_task(id) {
   for (var i = 0; i < tasks.length; i++) {
-    if (id == tasks[i].id) {
-      input.innerText = tasks[i].text;
+    if ((tasks[i].id = id)) {
+      tasks[i].text = input.value;
+      display_task();
+      return;sp
+      // console.log(tasks);
     }
   }
+}
+
+function edit_task(id) {
+  edit.innerHTML = "";
+  for (var i = 0; i < tasks.length; i++) {
+    if (id == tasks[i].id) {
+      edit.innerHTML += `<button id="update_task" onclick="update_task(${tasks[i].id})">Update</button>`;
+      tasks[i].edit = true;
+      input.value = tasks[i].text;
+      // update_task(id);
+      break;
+    }
+  }
+  // display_task();
 }
