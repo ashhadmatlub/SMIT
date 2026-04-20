@@ -1,7 +1,10 @@
 var tasks = [];
+var value;
+var edit = false;
 var show = document.getElementById("task_Display"); // display
 var input = document.getElementById("assign_task"); // get input text value
-var edit = document.getElementById("btn_container"); // for edit purpose
+var edit_btn = document.getElementById("btn_container"); // for edit purpose
+edit_btn.innerHTML = `<button id="add_task" onclick="add_task()">Add</button>`;
 
 function add_task() {
   var assign_task = document.getElementById("assign_task");
@@ -29,7 +32,6 @@ function add_task() {
     date: new Date(),
     done: false,
     text: assign_task.value,
-    edit: false,
   };
 
   tasks.push(obj);
@@ -44,20 +46,42 @@ function display_task() {
   for (var i = 0; i < tasks.length; i++) {
     var get_name = tasks[i]; // to get obj
 
-    if (get_name.done == false && get_name.edit == false) {
+    if (get_name.done == false && edit == false) {
+      // when we create a new task
+      edit_btn.innerHTML = `<button id="add_task" onclick="add_task()">Add</button>`;
+
       show.innerHTML += `<div class = "display_item" > 
       <span> ${get_name.text}</span>
       <button id = " delete " onclick="delete_task(${get_name.id})"> Delete </button> 
       <button id = " edit " onclick="edit_task(${get_name.id})"> Edit </button> 
       <button id = " done " onclick="done_task(${get_name.id})"> Done </button> 
       </div>`;
-    } else {
+    } else if (edit == false && get_name.done == true) {
+      show.innerHTML += `<div class = "display_item" > 
+      <span> ${get_name.text}</span> 
+      <button id = " undo " onclick="undo_task(${get_name.id})"> Undo </button>
+      <button id = " delete " onclick="delete_task(${get_name.id})"> Delete </button> 
+      </div>`;
+    } else if (edit == true && get_name.done == false) {
+      // when the task is not done and we have to edit it
       show.innerHTML += `<div class = "display_item" > 
       <span> ${get_name.text}</span>
-      <button id = " delete " disabled onclick="delete_task(${get_name.id})"> Delete </button> 
-      <button id = " edit " onclick="edit_task(${get_name.id})"> Edit </button> 
-      <button id = " done " disabled onclick="done_task(${get_name.id})"> Done </button> 
       </div>`;
+    } else {
+      show.innerHTML += `<div class = "display_item" > 
+      <span> ${get_name.text}</span> 
+      <button id = " delete " onclick="delete_task(${get_name.id})"> Delete </button> 
+      </div>`;
+    }
+  }
+}
+
+function undo_task(id) {
+  for (var i = 0; i < tasks.length; i++) {
+    if (tasks[i].id == id) {
+      tasks[i].done = false;
+      display_task();
+      return;
     }
   }
 }
@@ -75,33 +99,57 @@ function done_task(id) {
   for (var i = 0; i < tasks.length; i++) {
     if (id == tasks[i].id) {
       tasks[i].done = true;
+      display_task();
+      return;
     }
   }
-  display_task();
 }
 
 function update_task(id) {
+  var value1 = input.value;
   for (var i = 0; i < tasks.length; i++) {
-    if ((tasks[i].id = id)) {
+    if (value1 == tasks[i].text) {
+      alert(
+        "Can't update task, as the updated Task name is similiar to one of the existing task name",
+      );
+      return;
+    }
+  }
+  for (var i = 0; i < tasks.length; i++) {
+    if (tasks[i].id == id) {
+      if (value == value1) {
+        alert("Cant update task, as the name of the task is not changed ");
+        return;
+      }
+      edit = false;
+      tasks[i].done = false;
       tasks[i].text = input.value;
+      input.value = "";
+      // alert("Updated Successfully ");
       display_task();
-      return;sp
-      // console.log(tasks);
+      return;
     }
   }
 }
 
+// it makes the UI more better and allows the user to go back
+function cancel_update() {
+  edit = false;
+  display_task();
+  return;
+}
+
 function edit_task(id) {
-  edit.innerHTML = "";
+  edit_btn.innerHTML = `<button id="update_task" onclick="update_task()">Update</button>`;
   for (var i = 0; i < tasks.length; i++) {
-    if (id == tasks[i].id) {
-      edit.innerHTML += `<button id="update_task" onclick="update_task(${tasks[i].id})">Update</button>`;
-      edit.innerHTML += `<button id="update_task" onclick="update_task(${tasks[i].id})">Done</button>`;
-      tasks[i].edit = true;
+    if (tasks[i].id == id) {
+      value = tasks[i].text;
       input.value = tasks[i].text;
-      // update_task(id);
-      break;
+      edit = true;
+      edit_btn.innerHTML = `<button id="update_task" onclick="update_task(${id})">Update</button>
+      <button id="cancel_task" onclick="cancel_update()">Cancel</button>`;
+      // display_task();
+      return;
     }
   }
-  // display_task();
 }
