@@ -96,6 +96,7 @@ function edit_task(id) {
   for (var i = 0; i < tasks.length; i++) {
     if (id == tasks[i].id) {
       edit.innerHTML += `<button id="update_task" onclick="update_task(${tasks[i].id})">Update</button>`;
+      edit.innerHTML += `<button id="update_task" onclick="update_task(${tasks[i].id})">Done</button>`;
       tasks[i].edit = true;
       input.value = tasks[i].text;
       // update_task(id);
