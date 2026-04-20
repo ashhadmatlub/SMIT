@@ -13,7 +13,7 @@ function get_local_storage() {
   task_data = JSON.parse(task_data);
 
   if (task_data !== null) {
-    task_data = tasks;
+    tasks = task_data;
   }
   display_task();
 }
@@ -97,6 +97,7 @@ function undo_task(id) {
   for (var i = 0; i < tasks.length; i++) {
     if (tasks[i].id == id) {
       tasks[i].done = false;
+      window.localStorage.setItem("tasks", JSON.stringify(tasks));
       display_task();
       return;
     }
@@ -118,6 +119,7 @@ function done_task(id) {
   for (var i = 0; i < tasks.length; i++) {
     if (id == tasks[i].id) {
       tasks[i].done = true;
+      window.localStorage.setItem("tasks", JSON.stringify(tasks));
       display_task();
       return;
     }
