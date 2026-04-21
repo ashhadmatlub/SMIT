@@ -88,6 +88,7 @@ function display_task() {
       show.innerHTML += `<div class = "display_item" > 
       <span> ${get_name.text}</span> 
       <button id = " delete " onclick="delete_task(${get_name.id})"> Delete </button> 
+      <button id = " undo " onclick="undo_task(${get_name.id})"> Undo </button>
       </div>`;
     }
   }
