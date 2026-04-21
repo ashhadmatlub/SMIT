@@ -172,7 +172,7 @@ function edit_task(id) {
       edit = true;
       edit_btn.innerHTML = `<button id="update_task" onclick="update_task(${id})">Update</button>
       <button id="cancel_task" onclick="cancel_update()">Cancel</button>`;
-      // display_task();
+      display_task();
       return;
     }
   }

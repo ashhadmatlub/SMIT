@@ -236,6 +236,7 @@ body::after {
   transition: border-color var(--t) var(--ease), background var(--t) var(--ease), transform var(--t) var(--ease);
 }
 
+/* Left accent stripe — hidden by default, shown on hover */
 .display_item::before {
   content: '';
   position: absolute;
@@ -248,17 +249,63 @@ body::after {
   transition: transform var(--t) var(--ease);
 }
 
-.display_item:hover {
+/* STATE 1: edit==false, done==false — Delete + Edit + Done buttons
+   Normal interactive card. Hover slides right, purple stripe appears. */
+.display_item:has(button[id*="edit"]):hover {
   border-color: var(--border-2);
   background: var(--bg-surface);
   transform: translateX(3px);
 }
+.display_item:has(button[id*="edit"]):hover::before { transform: scaleY(1); }
 
-.display_item:hover::before { transform: scaleY(1); }
-
-.display_item:has([id*="undo"])::before {
+/* STATE 2: edit==false, done==true — Undo + Delete buttons
+   Green stripe always on, text struck through. */
+.display_item:has(button[id*="undo"])::before {
   background: var(--green);
   transform: scaleY(1);
+}
+.display_item:has(button[id*="undo"]) span {
+  text-decoration: line-through;
+  color: var(--text-3);
+}
+.display_item:has(button[id*="undo"]):hover {
+  border-color: var(--border-2);
+  background: var(--bg-surface);
+  transform: translateX(3px);
+}
+.display_item:has(button[id*="undo"]):hover::before { transform: scaleY(1); }
+
+/* STATE 3: edit==true, done==false — NO buttons at all (just span)
+   Dimmed + amber stripe + no-pointer. No hover lift. */
+.display_item:not(:has(button)) {
+  opacity: 0.4;
+  border-color: var(--amber-border);
+  cursor: not-allowed;
+}
+.display_item:not(:has(button))::before {
+  background: var(--amber);
+  transform: scaleY(1);
+}
+.display_item:not(:has(button)):hover {
+  background: var(--bg-card);
+  border-color: var(--amber-border);
+  transform: none;
+}
+
+/* STATE 4: edit==true, done==true — Delete button ONLY (no edit, no done, no undo)
+   Dimmed + red stripe to signal restricted. */
+.display_item:has(button[id*="delete"]):not(:has(button[id*="edit"])):not(:has(button[id*="done"])):not(:has(button[id*="undo"])) {
+  opacity: 0.5;
+  border-color: var(--red-border);
+}
+.display_item:has(button[id*="delete"]):not(:has(button[id*="edit"])):not(:has(button[id*="done"])):not(:has(button[id*="undo"]))::before {
+  background: var(--red);
+  transform: scaleY(1);
+}
+.display_item:has(button[id*="delete"]):not(:has(button[id*="edit"])):not(:has(button[id*="done"])):not(:has(button[id*="undo"])):hover {
+  background: var(--bg-card);
+  border-color: var(--red-border);
+  transform: none;
 }
 
 @keyframes popIn {
@@ -276,12 +323,7 @@ body::after {
   word-break: break-word;
 }
 
-.display_item:has([id*="undo"]) span {
-  text-decoration: line-through;
-  color: var(--text-3);
-}
-
-/* Task action buttons */
+/* Task action buttons — scoped inside .display_item to never clash with #btn_container */
 .display_item button {
   flex-shrink: 0;
   padding: 0.38rem 0.8rem;
@@ -298,17 +340,19 @@ body::after {
 
 .display_item button:active { transform: scale(0.93); }
 
-[id*="delete"] { background: var(--red-dim); color: var(--red); border-color: var(--red-border); }
-[id*="delete"]:hover { background: rgba(255,118,117,0.18); }
+/* Your JS sets id=" delete " id=" edit " id=" done " id=" undo " (with spaces).
+   [id*="delete"] catches " delete " correctly. Scoped to .display_item buttons only. */
+.display_item button[id*="delete"] { background: var(--red-dim);   color: var(--red);   border-color: var(--red-border); }
+.display_item button[id*="delete"]:hover { background: rgba(255,118,117,0.18); }
 
-[id*="edit"] { background: var(--amber-dim); color: var(--amber); border-color: var(--amber-border); }
-[id*="edit"]:hover { background: rgba(253,203,110,0.18); }
+.display_item button[id*="edit"]   { background: var(--amber-dim); color: var(--amber); border-color: var(--amber-border); }
+.display_item button[id*="edit"]:hover { background: rgba(253,203,110,0.18); }
 
-[id*="done"] { background: var(--green-dim); color: var(--green); border-color: var(--green-border); }
-[id*="done"]:hover { background: rgba(0,206,201,0.2); }
+.display_item button[id*="done"]   { background: var(--green-dim); color: var(--green); border-color: var(--green-border); }
+.display_item button[id*="done"]:hover { background: rgba(0,206,201,0.2); }
 
-[id*="undo"] { background: rgba(123,123,153,0.08); color: var(--text-2); border-color: var(--border-2); }
-[id*="undo"]:hover { background: var(--bg-hover); color: var(--text-1); }
+.display_item button[id*="undo"]   { background: rgba(123,123,153,0.08); color: var(--text-2); border-color: var(--border-2); }
+.display_item button[id*="undo"]:hover { background: var(--bg-hover); color: var(--text-1); }
 
 /* Empty state */
 #task_Display:empty::after {
