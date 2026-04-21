@@ -119,3 +119,33 @@ Clean and minimal UI
 Tech
 
 HTML, CSS, JavaScript
+
+Assignment_8 :
+
+📝 Task List App
+
+A simple and efficient Task List web app built with JavaScript. It allows users to manage daily tasks with features like add, edit, delete, and mark as complete — all stored in local storage.
+
+🚀 Features
+Add new tasks
+Prevent duplicate tasks
+Edit existing tasks
+Mark tasks as done / undo
+Delete individual tasks
+Delete all tasks
+Persistent data using Local Storage
+
+Tech Used
+HTML
+CSS
+JavaScript (Vanilla JS)
+
+💡 How It Works
+Tasks are stored in the browser using Local Storage, so your data remains even after refreshing the page. Each task has a unique ID, status (done/undone), and text.
+
+📂 Setup
+Clone the repository
+Open index.html in your browser
+🔗 Live Demo
+
+(Add your deployed link here)
