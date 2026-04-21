@@ -148,4 +148,4 @@ Clone the repository
 Open index.html in your browser
 🔗 Live Demo
 
-(Add your deployed link here)
+https://ashhads-tasks-list.netlify.app/
