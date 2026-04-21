@@ -1,5 +1,6 @@
 var tasks = [];
 var value;
+var count = 0;
 var edit = false;
 var show = document.getElementById("task_Display"); // display
 var input = document.getElementById("assign_task"); // get input text value
@@ -15,6 +16,7 @@ function get_local_storage() {
   if (task_data !== null) {
     tasks = task_data;
   }
+  count = tasks.length;
   display_task();
 }
 
@@ -30,14 +32,8 @@ function add_task() {
   // Similiar tasks check
   for (var i = 0; i < tasks.length; i++) {
     if (assign_task.value == tasks[i].text) {
-      var ans = prompt(
-        "Tasks with similiar name already exists, Create new one ? ( Yes / no )",
-      );
-      if (ans == "no") {
-        return;
-      } else {
-        break;
-      }
+      alert("Tasks with similiar name already exists, Can't create new one");
+      return;
     }
   }
 
@@ -49,6 +45,7 @@ function add_task() {
   };
 
   tasks.push(obj);
+  count++;
   var data = JSON.stringify(tasks);
   window.localStorage.setItem("tasks", data);
   // idx++;
@@ -59,6 +56,9 @@ function add_task() {
 
 function display_task() {
   show.innerHTML = "";
+  if (count == 0) {
+    edit_btn.innerHTML = `<button id="add_task" onclick="add_task()">Add</button>`;
+  }
   for (var i = 0; i < tasks.length; i++) {
     var get_name = tasks[i]; // to get obj
 
@@ -109,6 +109,7 @@ function delete_task(id) {
     if (id == tasks[i].id) {
       tasks.splice(i, 1);
       window.localStorage.setItem("tasks", JSON.stringify(tasks)); // local storage
+      count--;
       break;
     }
   }
@@ -154,8 +155,8 @@ function update_task(id) {
   }
 }
 
-// it makes the UI more better and allows the user to go back
 function cancel_update() {
+  // it makes the UI more better and allows the user to go back
   edit = false;
   input.value = "";
   display_task();
@@ -180,6 +181,7 @@ function edit_task(id) {
 function delete_all() {
   tasks = [];
   window.localStorage.removeItem("tasks");
+  count = 0;
   display_task();
   // show.innerHTML = "";
   // console.log(tasks);

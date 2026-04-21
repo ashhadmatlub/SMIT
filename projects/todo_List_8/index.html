@@ -3,22 +3,144 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Todo List</title>
+    <title>My Tasks</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <!-- holds everything -->
+    <!-- Page header (pure HTML, no JS) -->
+    <div id="page-header">
+      <h1>My <span>Tasks</span></h1>
+      <p>Stay focused. Get things done.</p>
+    </div>
+
+    <!-- Main container — input + buttons -->
     <div id="main_container">
-      <!-- takes the task / todo from the user. -->
       <div class="input_container">
-        <input type="text" id="assign_task" />
+        <input
+          type="text"
+          id="assign_task"
+          placeholder="What needs to be done?"
+          autocomplete="off"
+        />
       </div>
       <div id="btn_container">
-        <!-- <button id="add_task" onclick="add_task()">Add</button> -->
-        <!-- <button id="delete_task" onclick="delete_task()">Delete</button> -->
+        <!-- JS writes buttons here -->
       </div>
     </div>
-    <div id="task_Display" onclick="display_task()"></div>
+
+    <!-- Task list -->
+    <div id="task_Display"></div>
+
+    <!-- Custom modal (replaces alert / prompt) -->
+    <div id="modal-overlay">
+      <div id="modal-box">
+        <div id="modal-icon">⚠️</div>
+        <div id="modal-title">Notice</div>
+        <div id="modal-message"></div>
+        <div id="modal-input-wrap" style="display: none">
+          <input type="text" id="modal-input" placeholder="Type your answer…" />
+        </div>
+        <div id="modal-actions">
+          <button id="modal-cancel" style="display: none">Cancel</button>
+          <button id="modal-confirm">OK</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal intercept: overrides window.alert and window.prompt BEFORE app.js runs -->
+    <script>
+      (function () {
+        var overlay = document.getElementById("modal-overlay");
+        var icon = document.getElementById("modal-icon");
+        var titleEl = document.getElementById("modal-title");
+        var msgEl = document.getElementById("modal-message");
+        var inputWrap = document.getElementById("modal-input-wrap");
+        var inputEl = document.getElementById("modal-input");
+        var btnCancel = document.getElementById("modal-cancel");
+        var btnOK = document.getElementById("modal-confirm");
+
+        var _resolve = null;
+
+        function openModal(opts) {
+          icon.textContent = opts.icon || "⚠️";
+          icon.className = opts.warn ? "warn" : "";
+          titleEl.textContent = opts.title || "Notice";
+          msgEl.textContent = opts.msg || "";
+          btnOK.textContent = opts.okLabel || "OK";
+          btnOK.className = opts.danger ? "danger" : "";
+
+          if (opts.isPrompt) {
+            inputWrap.style.display = "block";
+            btnCancel.style.display = "inline-flex";
+            inputEl.value = opts.defaultVal || "";
+            setTimeout(function () {
+              inputEl.focus();
+            }, 50);
+          } else {
+            inputWrap.style.display = "none";
+            btnCancel.style.display = "none";
+          }
+
+          overlay.classList.add("open");
+        }
+
+        function closeModal(value) {
+          overlay.classList.remove("open");
+          if (_resolve) {
+            _resolve(value);
+            _resolve = null;
+          }
+        }
+
+        btnOK.addEventListener("click", function () {
+          closeModal(inputWrap.style.display !== "none" ? inputEl.value : true);
+        });
+
+        btnCancel.addEventListener("click", function () {
+          closeModal(null);
+        });
+
+        overlay.addEventListener("click", function (e) {
+          if (e.target === overlay) closeModal(null);
+        });
+
+        inputEl.addEventListener("keydown", function (e) {
+          if (e.key === "Enter") btnOK.click();
+          if (e.key === "Escape") btnCancel.click();
+        });
+
+        /* ── Override window.alert ── */
+        window.alert = function (msg) {
+          return new Promise(function (resolve) {
+            _resolve = resolve;
+            openModal({
+              icon: "⚠️",
+              warn: true,
+              title: "Heads up",
+              msg: msg,
+              okLabel: "Got it",
+              isPrompt: false,
+            });
+          });
+        };
+
+        /* ── Override window.prompt ── */
+        window.prompt = function (msg, defaultVal) {
+          return new Promise(function (resolve) {
+            _resolve = resolve;
+            openModal({
+              icon: "✏️",
+              title: "Quick question",
+              msg: msg,
+              okLabel: "Confirm",
+              isPrompt: true,
+              defaultVal: defaultVal || "",
+            });
+          });
+        };
+      })();
+    </script>
+
     <script src="app.js"></script>
   </body>
 </html>
